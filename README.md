@@ -1,11 +1,10 @@
 # Setup
 
-Install JDK 8 and JDK 11.
+Install JDK 8 and JDK 11. I used Open JDK 11 and zulu JDK 8.
 
 ```
 ~/java8-library-and-graal-sdk $ sdk list java |grep installed
-               |     | 22.0.0.2.r11 | grl     | installed  | 22.0.0.2.r11-grl    
-               |     | 21.3.1.r11   | grl     | installed  | 21.3.1.r11-grl      
+...
                |     | 11.0.2       | open    | installed  | 11.0.2-open         
                | >>> | 8.0.332      | zulu    | installed  | 8.0.332-zulu   
 ```
