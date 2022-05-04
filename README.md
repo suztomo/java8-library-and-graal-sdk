@@ -137,3 +137,17 @@ Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
 
 This check (running tests on JDK 8) ensures that the library users continue to
 use Java 8.
+
+# compiler-release-flag profile
+
+Java compiler in JDK 9 or higher has "--release" flag to ensure the generated
+bytecode is compatible with Java 8 runtime. Failure to use this flag may lead
+generating bytecode incompatible with the old runtime ([protobuf#7827](
+https://github.com/protocolbuffers/protobuf/issues/7827)).
+
+https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-release.html
+
+Unfortunately the Java compiler in JDK 8 does not understand the flag and fails
+to work if it's passed by the Maven compiler plugin. Therefore this project
+uses a Maven profile that only activated when using JDK 9 or higher.
+

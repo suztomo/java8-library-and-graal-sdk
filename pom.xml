@@ -32,4 +32,36 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- The compiler configuration in java-shared-config -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.10.1</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+            <compilerArgument>-Xlint:unchecked</compilerArgument>
+            <compilerArgument>-Xlint:deprecation</compilerArgument>
+            <showDeprecation>true</showDeprecation>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <profiles>
+    <profile>
+      <id>compiler-release-flag</id>
+      <activation>
+        <jdk>[9,]</jdk>
+      </activation>
+      <properties>
+        <!-- The flag is only available in JDK 9 or higher -->
+        <maven.compiler.release>8</maven.compiler.release>
+      </properties>
+    </profile>
+  </profiles>
 </project>
