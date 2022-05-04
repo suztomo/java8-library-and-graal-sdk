@@ -1,3 +1,5 @@
+This repository demonstrates how to support both Java 8 and GraalVM 22.1.0.
+
 # Setup
 
 Install JDK 8 and JDK 11. I used Open JDK 11 and zulu JDK 8.
@@ -73,11 +75,14 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 ```
 
 Notice that `FooFeature.java` touches `ImageSingletons`.
-This class from `org.graalvm.sdk:graal-sdk:22.1.0` is known to be incompatible with
-Java 8 runtime. Because the tests do not touch `FooFeature`, it does not
-fail the build.
+This class from `org.graalvm.sdk:graal-sdk:22.1.0` is known to be incompatible
+with Java 8 runtime.
+Because *the tests do not touch `FooFeature`*, it does not
+fail the build. This enables us to place classes that touch the classes in
+GraalVM SDK 22.1.0 even though `org.graalvm.sdk:graal-sdk:22.1.0` is not
+compatible with Java 8. 
 
-# What if some classes used by tests are not compatible with Java 8
+# What if some classes are not compatible with Java 8
 
 In `App.java`, uncomment the reference to `ImageSingletons`. Do the steps
 above and it fails at the test phase:
